@@ -19,3 +19,8 @@ c.sell()
 #using setter function
 c.setMaxPrice(1000)
 c.sell()
+
+#output
+#900
+#900
+#1000
