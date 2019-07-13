@@ -6,7 +6,9 @@ class UserRegistration:
         pass
 
     def signup(self,username, password):
+        #read file line by line 
         for i in open('account.txt','r').readlines():
+            #append existance username
             if username == i.split()[0]:
                 userNameList.append(i.split()[0])
         if username not in userNameList:
