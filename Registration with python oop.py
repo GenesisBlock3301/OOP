@@ -1,4 +1,3 @@
-
 userNameList = list()
 class UserRegistration:
 
@@ -6,9 +5,7 @@ class UserRegistration:
         pass
 
     def signup(self,username, password):
-        #read file line by line 
         for i in open('account.txt','r').readlines():
-            #append existance username
             if username == i.split()[0]:
                 userNameList.append(i.split()[0])
         if username not in userNameList:
@@ -33,15 +30,23 @@ class UserRegistration:
 
 if __name__ == "__main__":
     r = UserRegistration()
-    print("Enter your choice :")
-    print("If newer here, signup . So press 1")
-    print("If already signup , please press 2 for login: ")
-    n = int(input())
-    if n == 1:
-        username = input("enter username: ")
-        password = input("enter password: ")
-        r.signup(username, password)
-    elif n == 2:
-        r.login(input("enter your username: "), input("enter your password: "))
-    else:
-        print("There haven't such operation")
+    def main_menu():
+        print("Enter your choice :")
+        print("If newer here, signup . So press 1")
+        print("If already signup , please press 2 for login: ")
+    try:
+        main_menu()
+        n = input()
+        while n != "":
+            if int(n) == 1:
+                username = input("enter username: ")
+                password = input("enter password: ")
+                r.signup(username, password)
+            elif int(n) == 2:
+                r.login(input("enter your username: "), input("enter your password: "))
+            else:
+                print("There have any operation")
+            main_menu()
+            n = input()
+    except:
+        print("Incorrect credential")
