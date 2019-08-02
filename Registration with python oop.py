@@ -1,6 +1,4 @@
 userNameList = list()
-
-
 class UserRegistration:
 
     def __init__(self):
@@ -21,31 +19,34 @@ class UserRegistration:
            print("username exist")
 
     def login(self,Uname,Upass):
+        flag = False
         for line in open('account.txt','r').readlines():
-            print(line.split(" ")[1],"====",Upass)
             if line.split(" ")[0] == Uname and line.split()[1] == Upass:
-                print("Correct credential")
+                flag = True
                 break;
-            #print("Incorrect credential")
+        return flag
+                
 
 if __name__ == "__main__":
     r = UserRegistration()
-    #r.signup("Amin", "12345")
     def main_menu():
         print("|=====================================================|")
         print("|====Enter your choice :==============================|")
         print("|====If newer here, signup . So press 1:==============|")
         print("|====If already signup , please press 2 for login:====|")
         print("|=====================================================|")
+        print("\n")
     main_menu()
     n = input()
     while n != "":
         if int(n) == 1:
-            #username =
-            #password =
             r.signup(input("enter username: "),input("enter password: "))
         elif int(n) == 2:
-            r.login(input("enter your username: "), input("enter your password: "))
+            inp=r.login(input("enter your username: "), input("enter your password: "))
+            if inp:
+                print("Successfully login")
+            else:
+                print("Invalid username or password,try again...")
         else:
             print("There have any operation")
         main_menu()
